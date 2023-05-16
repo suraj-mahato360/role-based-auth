@@ -6,7 +6,6 @@ import 'chart.js';
 import Login from "./components/login_component";
 import SignUp from "./components/signup_component";
 import UserDetails from "./components/userDetails";
-// import ImageUpload from "./components/imageUpload.";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -17,7 +16,7 @@ function App() {
           <Route
             exact
             path="/"
-            element={isLoggedIn == "true" ? <UserDetails /> : <Login />}
+            element={isLoggedIn === "true" ? <UserDetails /> : <Login />}
           />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />

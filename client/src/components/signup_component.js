@@ -8,14 +8,14 @@ export default function SignUp() {
   const [secretKey, setSecretKey] = useState("");
 
   const handleSubmit = (e) => {
-    if (userType == "Admin" && secretKey != "Shadow") {
+    if (userType === "Admin" && secretKey !== "Shadow") {
       e.preventDefault();
       alert("Invalid Admin");
     } else {
       e.preventDefault();
 
       console.log(username, email, password);
-      fetch("http://localhost:5000/register", {
+      fetch("https://dashboard-buj6.onrender.com/register", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -33,7 +33,7 @@ export default function SignUp() {
         .then((res) => res.json())
         .then((data) => {
           console.log(data, "userRegister");
-          if (data.status == "ok") {
+          if (data.status === "ok") {
             alert("Registration Successful");
           } else {
             alert("Something went wrong");
@@ -63,7 +63,7 @@ export default function SignUp() {
               onClick={(e) => setUserType(e.target.value)}
             />
           </div>
-          {userType == "Admin" ? (
+          {userType === "Admin" ? (
             <div className="mb-3">
               <label>Secret Key</label>
               <input

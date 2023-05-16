@@ -8,7 +8,7 @@ export default function Login() {
     e.preventDefault();
 
     console.log(email, password);
-    fetch("http://localhost:5000/login-user", {
+    fetch("https://dashboard-buj6.onrender.com/login-user", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -24,11 +24,13 @@ export default function Login() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userRegister");
-        if (data.status == "ok") {
+        if (data.status === "ok") {
           window.localStorage.setItem("token", data.data);
           window.localStorage.setItem("loggedIn", true);
-
           window.location.href = "./userDetails";
+        }
+        else{
+          alert("enter valid credentials");
         }
       });
   }
